@@ -1,8 +1,8 @@
 **Table of Contents**
 - [Starter-REST](#starter-rest)
   - [express-es6](#express-es6)
-  - [Starting the server](#starting-the-server)
-
+  - [Technologies](#technologies)
+  - [Starting the server](#starting-the-server)
   - [Authors](#authors)
   - [Problems?](#problems)
   - [Version](#version)
