@@ -50,7 +50,7 @@ npm start
  
 ## Authors ##
 
-    * [Maxime Flament](mailto://maxime.flament@etu.unice.fr?subject=starter-express-es6-rest)
+   * [Maxime Flament](mailto:maxime.flament@etu.unice.fr?subject=starter-express-es6-rest)
  
  
 ## Problems?
