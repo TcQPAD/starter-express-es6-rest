@@ -1,4 +1,16 @@
-# e-jobbing-rest 
+# e-jobbing-rest
+
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+- [e-jobbing-rest](#)
+	- [express-es6](#)
+	- [Technologies](#)
+	- [Intellij IDE configuration](#)
+	- [Starting the server](#)
+	- [Authors](#)
+	- [Problems?](#)
+	- [Version](#)
+
 ## express-es6
 Sample of express server using ES6
 
