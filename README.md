@@ -1,5 +1,3 @@
-# e-jobbing-rest
-
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
 - [e-jobbing-rest](#)
@@ -10,6 +8,10 @@
 	- [Authors](#)
 	- [Problems?](#)
 	- [Version](#)
+
+# e-jobbing-rest
+
+
 
 ## express-es6
 Sample of express server using ES6
