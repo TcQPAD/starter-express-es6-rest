@@ -1,15 +1,14 @@
-**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+**Table of Contents**
+- [Starter-REST](#starter-rest)
+  - [express-es6](#express-es6)
+  - [Starting the server](#starting-the-server)
 
-- [e-jobbing-rest](#)
-	- [express-es6](#)
-	- [Technologies](#)
-	- [Intellij IDE configuration](#)
-	- [Starting the server](#)
-	- [Authors](#)
-	- [Problems?](#)
-	- [Version](#)
+  - [Authors](#authors)
+  - [Problems?](#problems)
+  - [Version](#version)
 
-# e-jobbing-rest
+# Starter-REST
+
 
 
 
@@ -21,7 +20,7 @@ The goal of this project is to have a sample of server using express and the ES6
 Details on the new technologies can be found in the 
  **Technologies** section.
  
- ## Technologies ##
+ ## Technologies
  
  This server runs under [NodeJS v6.10.3](https://nodejs.org/en/).
  
@@ -62,7 +61,7 @@ npm install
 npm start
 ```
  
-## Authors ##
+##Authors
 
    * [Maxime Flament](mailto:maxime.flament@etu.unice.fr?subject=starter-express-es6-rest)
  
