@@ -2,9 +2,9 @@
 - [Starter-REST](#starter-rest)
   * [express-es6](#express-es6)
   * [Technologies](#technologies)
-  * [Intellij IDE configuration](#intellij-ide-configuration)
+  * [IDE configuration](#ide-configuration)
   * [Starting the server](#starting-the-server)
-  * [Problems?](#problems-)
+  * [Problems?](#problems)
   * [Version](#version)
 
 # Starter-REST
@@ -30,7 +30,7 @@ You can use any type of database you need to work with this application.
 I recommend using NoSQL databases such as MongoDB, since they store information in a format that
 allows JSON conversion, and have a lot of ORM packages available through NPM.
 
-## Intellij IDE configuration ##
+## IDE configuration ##
 
 If you wish to make NodeJS development much easier,
 you can install several plugins into Intellij, like autocompletion,
@@ -69,12 +69,12 @@ sub-routes that respond to 2 types of requests:
   - GET : http://127.0.0.1:3000/api/customers/
   - POST : http://127.0.0.1:3000/api/customers/
 
-##Authors
+## Authors
 
   * [Maxime Flament](mailto:maxime.flament@etu.unice.fr?subject=starter-express-es6-rest)
 
 
-## Problems?
+## Problems
 
 Contact me by clicking the 'Maxime Flament' link in the Authors section.
 
