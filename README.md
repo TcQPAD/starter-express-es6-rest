@@ -33,6 +33,7 @@ follow the instructions below:
 
 ```
 git clone https://github.com/TcQPAD/startert-express-es6-rest.git
+cd startert-express-es6-rest
 git remote rename origin upstream
 git remote add origin URL_TO_GITHUB_REPO_CREATED_AT_STEP_1)
 # if you can't push to master, 
