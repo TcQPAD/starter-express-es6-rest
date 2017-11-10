@@ -21,7 +21,8 @@ Details on the new technologies can be found in the **Technologies** section.
 
 ## Technologies
 
-This server runs under [NodeJS v6.10.3](https://nodejs.org/en/).
+This server runs under [NodeJS v6.10.3](https://nodejs.org/en/). Newer versions may be compatible, but **I didn't test
+them and won't**.
 
 If you want to develop under NodeJS, please install the 
 NodeJS environment gotten from the link above. 
