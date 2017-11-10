@@ -4,6 +4,8 @@
   * [Technologies](#technologies)
   * [IDE configuration](#ide-configuration)
   * [Starting the server](#starting-the-server)
+  * [Functions](#functions)
+  * [Authors](#authors)
   * [Problems?](#problems)
   * [Version](#version)
   * [License](#license)
@@ -30,6 +32,9 @@ After you installed it, please restart your computer to make the changes effecti
 You can use any type of database you need to work with this application.
 I recommend using NoSQL databases such as MongoDB, since they store information in a format that
 allows JSON conversion, and have a lot of ORM packages available through NPM.
+
+NPM comes with NodeJS and is a package manager similar to Maven for Java. This tool provides
+a huge quantity of libraries that you'll definitely want to use for your project.
 
 ## IDE configuration ##
 
@@ -69,6 +74,18 @@ sub-routes that respond to 2 types of requests:
 
   - GET : http://127.0.0.1:3000/api/customers/
   - POST : http://127.0.0.1:3000/api/customers/
+
+## Functions
+
+The server is already configured to :
+
+  - Use the default IP and PORT for the MongoDB database running in your environment
+  - Behave as a REST server (see: https://openclassrooms.com/courses/utilisez-des-api-rest-dans-vos-projets-web/pourquoi-rest)
+
+The advantages of such a code architecture are : 
+
+  - New functionality integration is really fast and easy. You only need to add a new folder with a router file, and a model file.
+  - Logic of the application is separated from the behavior of the application.
 
 ## Authors
 

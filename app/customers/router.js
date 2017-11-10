@@ -6,6 +6,10 @@
  * This file uses a model file in order to dissociate the server behavior
  * with users, and the server logic.
  *
+ * DON'T FORGET THE ASYNC KEYWORD WHEN DECLARING ROUTE HANDLING
+ * FUNCTIONS OR PEOPLE TRYING TO ACCESS THE CORRESPONDING ROUTE WILL MAKE
+ * THE SERVER CRASH/NOT GET A RESPONSE FROM THE SERVER
+ *
  * @author Maxime Flament
  */
 
