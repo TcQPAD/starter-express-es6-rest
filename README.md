@@ -26,14 +26,17 @@ In order to install this starter and integrate it to your project,
 follow the instructions below:
 
 `1) Create a new repository on Github or any other similar service.` 
+
 `2) Create a new folder (on your machine) where you'll store the project.`
+
 `3) Open a Shell in the newly created folder and enter:`
 
 ```
 git clone https://github.com/TcQPAD/startert-express-es6-rest.git
 git remote rename origin upstream
 git remote add origin URL_TO_GITHUB_REPO_CREATED_AT_STEP_1)
-# if you can't push to master, it's because you missed one of the previous CMD and are trying to push to my repository
+# if you can't push to master, 
+# it's because you missed one of the previous CMD and are trying to push to my repository
 git push origin master 
 ```
 
@@ -42,7 +45,7 @@ new major releases of NodeJS.
 
 I will post a message on the association group if that's the case. You can update the project by issuing the following command:
 
-`git pull upstream master && git push origin master` # or whatever branch you're working with
+`git pull upstream master && git push origin master # or whatever branch you're working with`
 
 You **should not issue** this command on your master branch since it may break some code due to version conflicts.
 
