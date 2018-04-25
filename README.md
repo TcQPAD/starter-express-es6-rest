@@ -131,13 +131,13 @@ When you'll try to connect your frontend with this API, you may encounter an err
 `Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://YOURDOMAIN:PORT' is therefore not allowed access`
 
 This is because you didn't tell your backend API to trust the client even though its origin came from a domain he doesn't know.
-To fix this issue, follow the instructions below :
+To fix this issue, follow the instructions below:
 
-  * Add the CORS dependency to your project :
+  * Add the CORS dependency to your project:
   
   `npm i cors@^2.8.3 --save` (you can replace 2.8.3 with any version you wish to install)
   
-  * In your index.js file, add the following lines along with the middlewares attachments to your server :
+  * In your index.js file, add the following lines along with the middlewares attachments to your server:
   
   ```
   let originsWhitelist = [
@@ -162,11 +162,11 @@ Sometimes, you'll want to allow a given user to upload a file to your backend. F
 
 It can be really cumbersome to implement by yourself a complete middleware to handle form data forms, this is why I'll show you how to use a third library that will do the job for us.
 
-  * Install formidable :
+  * Install formidable:
   
   `npm i formidable@^1.1.1 --save` (you can replace 1.1.1 with version you wish to install)
   
-  * Import formidable middleware into index.js file :
+  * Import formidable middleware into index.js file:
   
   ```
   app.use('/endpoint', (req, res, next) => {
@@ -174,7 +174,6 @@ It can be really cumbersome to implement by yourself a complete middleware to ha
       encoding: 'utf-8',
       uploadDir: path.join(__dirname, 'uploads'), // change with the directory you wish to upload to (on your server)
       multiples: false,                           // will tell formidable to ignore forms with more than one file
-                                                  // if you turn on this option, formidable will create an array of files 
       keepExtensions: true                        // the uploaded files will keep their extensions
     });
     form.once('error', console.log);
@@ -185,7 +184,21 @@ It can be really cumbersome to implement by yourself a complete middleware to ha
   });
   ```
   
-  Below is a sample where I import several middlewares, in an index.js file of one of the backend I wrote :
+  * Then, in your routes that will handle the check of form data you receive, you can access the file(s) and data this way:
+  
+  ```
+  req.fields // equivalent to req.body for multipart/form-data Content-Type
+  req.files  // will hold your file(s)
+  ```
+  
+  For example:
+  
+  ```
+  let userId = req.fields.userId;    // gets the user ID in the request
+  let userFile = req.files.file   // gets the file the user uploaded
+  ```
+  
+  Below is a sample where I import several middlewares, in an index.js file of one of the backend I wrote:
   
   ```
   // Body parser to be able to read the json in the request
@@ -195,10 +208,10 @@ It can be really cumbersome to implement by yourself a complete middleware to ha
   app.use('/assets', express.static('public'));
   
   // middleware for form parsing
-  app.use('/applicants/post-applicant-information', (req, res, next) => {
+  app.use('/some-route', (req, res, next) => {
     let form = new formidable.IncomingForm({
       encoding: 'utf-8',
-      uploadDir: path.join(__dirname, '../', 'test_upload_cv'),
+      uploadDir: path.join(__dirname, '../', 'uploads'),
       multiples: false,
       keepExtensions: true
     });
@@ -212,14 +225,14 @@ It can be really cumbersome to implement by yourself a complete middleware to ha
   let originsWhitelist = [
     'http://localhost:4200', //this is the front-end url for development
     'https://localhost:4200',
-    'https://e-jobbing.fr',
-    'https://e-jobbing.com',
-    'http://e-jobbing.fr',
-    'http://e-jobbing.com',
-    'https://www.e-jobbing.fr',
-    'https://www.e-jobbing.com',
-    'http://www.e-jobbing.fr',
-    'http://www.e-jobbing.com',
+    'https://a-domain.fr',
+    'https://a-domain.com',
+    'http://a-domain.fr',
+    'http://a-domain.com',
+    'https://www.a-domain.fr',
+    'https://www.a-domain.com',
+    'http://www.a-domain.fr',
+    'http://www.a-domain.com',
   ];
 
   let corsOptions = {
