@@ -124,7 +124,7 @@ The advantages of such a code architecture are :
 
 This section covers some troubleshootings you may encounter, and their solutions.
 
-*Cors* 
+#### Cors 
 
 When you'll try to connect your frontend with this API, you may encounter an error (on client side) telling something like :
 
@@ -156,7 +156,7 @@ To fix this issue, follow the instructions below:
   app.use(cors(corsOptions));
   ```
   
-*File upload and form parsing*
+#### File upload and form parsing
 
 Sometimes, you'll want to allow a given user to upload a file to your backend. For example, one may want to upload a profile picture, that will need to be received by your backend, checked (format, encoding, etc...) for validity, and stored on your server.
 
