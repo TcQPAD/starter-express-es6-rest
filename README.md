@@ -7,6 +7,8 @@
   * [Starting the server](#starting-the-server)
   * [Functions](#functions)
   * [Troubleshootings](#troubleshootings)
+     * [Cors](#cors)
+     * [File upload and form parsing](#file-upload-and-form-parsing)
   * [Authors](#authors)
   * [Problems?](#problems)
   * [Version](#version)
