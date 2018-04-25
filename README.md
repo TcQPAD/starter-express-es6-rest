@@ -6,6 +6,7 @@
   * [IDE configuration](#ide-configuration)
   * [Starting the server](#starting-the-server)
   * [Functions](#functions)
+  * [Troubleshootings](#troubleshootings)
   * [Authors](#authors)
   * [Problems?](#problems)
   * [Version](#version)
@@ -118,6 +119,119 @@ The advantages of such a code architecture are :
 
   - New functionality integration is really fast and easy. You only need to add a new folder with a router file, and a model file.
   - Logic of the application is separated from the behavior of the application.
+
+## Troubleshootings
+
+This section covers some troubleshootings you may encounter, and their solutions.
+
+*Cors* 
+
+When you'll try to connect your frontend with this API, you may encounter an error (on client side) telling something like :
+
+`Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://YOURDOMAIN:PORT' is therefore not allowed access`
+
+This is because you didn't tell your backend API to trust the client even though its origin came from a domain he doesn't know.
+To fix this issue, follow the instructions below :
+
+  * Add the CORS dependency to your project :
+  
+  `npm i cors@^2.8.3 --save` (you can replace 2.8.3 with any version you wish to install)
+  
+  * In your index.js file, add the following lines along with the middlewares attachments to your server :
+  
+  ```
+  let originsWhitelist = [
+    'http://localhost:4200', //this is an example of a front-end url for development
+    // add all your domains below, for example : your-domain.com, your-domain.org, etc...
+  ];
+
+  let corsOptions = {
+    origin: function(origin, callback){
+      let isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+      callback(null, isWhitelisted);
+    },
+    credentials:true
+  };
+  //here is the magic
+  app.use(cors(corsOptions));
+  ```
+  
+*File upload and form parsing*
+
+Sometimes, you'll want to allow a given user to upload a file to your backend. For example, one may want to upload a profile picture, that will need to be received by your backend, checked (format, encoding, etc...) for validity, and stored on your server.
+
+It can be really cumbersome to implement by yourself a complete middleware to handle form data forms, this is why I'll show you how to use a third library that will do the job for us.
+
+  * Install formidable :
+  
+  `npm i formidable@^1.1.1 --save` (you can replace 1.1.1 with version you wish to install)
+  
+  * Import formidable middleware into index.js file :
+  
+  ```
+  app.use('/endpoint', (req, res, next) => {
+    let form = new formidable.IncomingForm({
+      encoding: 'utf-8',
+      uploadDir: path.join(__dirname, 'uploads'), // change with the directory you wish to upload to (on your server)
+      multiples: false,                           // will tell formidable to ignore forms with more than one file
+                                                  // if you turn on this option, formidable will create an array of files 
+      keepExtensions: true                        // the uploaded files will keep their extensions
+    });
+    form.once('error', console.log);
+    form.parse(req, (err, fields, files) => {
+      Object.assign(req, {fields, files});
+      next();
+    })
+  });
+  ```
+  
+  Below is a sample where I import several middlewares, in an index.js file of one of the backend I wrote :
+  
+  ```
+  // Body parser to be able to read the json in the request
+  app.use(bodyParser.json());
+  
+  // prefixes /assets/ to all paths under public/
+  app.use('/assets', express.static('public'));
+  
+  // middleware for form parsing
+  app.use('/applicants/post-applicant-information', (req, res, next) => {
+    let form = new formidable.IncomingForm({
+      encoding: 'utf-8',
+      uploadDir: path.join(__dirname, '../', 'test_upload_cv'),
+      multiples: false,
+      keepExtensions: true
+    });
+    form.once('error', console.log);
+    form.parse(req, (err, fields, files) => {
+      Object.assign(req, {fields, files});
+      next();
+    })
+  });
+
+  let originsWhitelist = [
+    'http://localhost:4200', //this is the front-end url for development
+    'https://localhost:4200',
+    'https://e-jobbing.fr',
+    'https://e-jobbing.com',
+    'http://e-jobbing.fr',
+    'http://e-jobbing.com',
+    'https://www.e-jobbing.fr',
+    'https://www.e-jobbing.com',
+    'http://www.e-jobbing.fr',
+    'http://www.e-jobbing.com',
+  ];
+
+  let corsOptions = {
+    origin: function(origin, callback){
+      let isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+      callback(null, isWhitelisted);
+    },
+    credentials:true
+  };
+  //here is the magic
+  app.use(cors(corsOptions));
+  ```
 
 ## Authors
 
